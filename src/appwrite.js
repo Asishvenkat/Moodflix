@@ -60,9 +60,10 @@ export const getTrendingMovies = async () => {
             Query.limit(5),
             Query.orderDesc("count")
         ])
-
         return result.documents;
     } catch (error) {
-        console.error(error);
+        console.error("❌ Error fetching trending movies:", error.message);
+        console.error("Full Error:", error);
+        return []; // Always return an array to prevent runtime errors
     }
 };
